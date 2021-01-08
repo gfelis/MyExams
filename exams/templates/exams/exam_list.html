@@ -1,0 +1,10 @@
+<hi>All Exams</h1>
+{% for exam in object_list %}
+	<ul>
+		<li>id: {{ exam.id }}</li>
+		<li>title: {{ exam.title }}</li>
+		<li>description: {{ exam.description }}</li>
+		<li>date_start: {{ exam.date_start }}</li>
+		<li>date_finish: {{ exam.date_finish }}</li>
+	</ul>
+{% endfor %}

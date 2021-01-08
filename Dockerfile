@@ -14,8 +14,8 @@ WORKDIR /MyExams/
 
 # Install dependencies
 
-COPY Pipfile Pipfile.lock /MyExams/
-RUN pip install pipenv && pipenv install --system
+COPY requirements.txt /MyExams/
+RUN pip install -r requirements.txt
 
 # Copy project
 
