@@ -4,5 +4,5 @@ from .models import Exam
 
 class ExamSerializer(serializers.ModelSerializer):
 	class Meta:
-		fields = ('id', 'title', 'description', 'date_start','date_finish','questions')
+		fields = ('id', 'title', 'description', 'date_start','date_finish','location','questions')
 		model = Exam
