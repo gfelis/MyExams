@@ -1,7 +1,6 @@
 from django.db import models
 
 class Exam(models.Model):
-	id = models.PositiveIntegerField(primary_key=True)
 	title = models.CharField(max_length=250)
 	description = models.CharField(max_length=250)
 	date_start = models.DateField()

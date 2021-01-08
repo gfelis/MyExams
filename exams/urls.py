@@ -1,7 +1,9 @@
 from django.urls import path
 
-from .views import ExamListView
+from .views import ExamList, ExamDetail
 
 urlpatterns = [
-	path('', ExamListView.as_view(), name='home'),
+	
+	path('<int:pk>/', ExamDetail.as_view()),
+	path('', ExamList.as_view()),
 ]
