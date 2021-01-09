@@ -3,7 +3,8 @@ version: '3.7'
 services:
   web:
     build: .
-    command: python /MyExams/manage.py runserver 0.0.0.0:8000
+    restart: unless-stopped
+    command: ./docker-web-postgres.sh
     volumes:
       - .:/MyExams
     ports:
@@ -11,12 +12,13 @@ services:
     depends_on:
       - db
   db:
+    build: ./postgres_data
     image: postgres:11
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - ./postgres_data/data:/var/lib/postgresql/data/
 volumes:
   postgres_data:

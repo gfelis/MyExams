@@ -12,9 +12,10 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /MyExams/
 WORKDIR /MyExams/
 
-# Install dependencies
-
 COPY requirements.txt /MyExams/
+
+# Install dependencies
+RUN apt-get update && apt-get -y install postgresql
 RUN pip install -r requirements.txt
 
 # Copy project
