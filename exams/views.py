@@ -36,9 +36,9 @@ class GradeList(generics.ListCreateAPIView):
 	filter_backends = [filters.SearchFilter]
 	search_fields = ['students_id', 'exam_id']
 	
-#class GradeDetail(generics.RetrieveUpdateDestroyAPIView):
-#	queryset = Grade.objects.all()
-#	serializer_class = GradeSerializer
+class GradeDetail(generics.RetrieveUpdateDestroyAPIView):
+	queryset = Grade.objects.all()
+	serializer_class = GradeSerializer
 
 class GradeExamList(generics.ListCreateAPIView):
 	serializer_class = GradeSerializer

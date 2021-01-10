@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'rest_framework',
     #local
     'exams.apps.ExamsConfig',
-    'api.apps.ApiConfig',
 ]
 
 REST_FRAMEWORK = {

@@ -3,9 +3,10 @@ from django.db import models
 class Exam(models.Model):
 	title = models.CharField(max_length=250, unique=True)
 	description = models.CharField(max_length=250)
-	date_start = models.DateField()
-	date_finish= models.DateField()
-	location = models.CharField(max_length=250, default= '127.0.0.1:8000/api/v1')
+	date= models.DateField()
+	time_start = models.TimeField(null=True)
+	time_end = models.TimeField(null=True)
+	location = models.CharField(max_length=250, default= '127.0.0.1:8000/api/exams/')
 	
 	def __str__(self):
 		return self.title
