@@ -24,9 +24,11 @@ class StudentList(generics.ListCreateAPIView):
 	filter_backends = [filters.SearchFilter]
 	search_fields = ['dni', 'name']
 	
-class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
-	queryset = Student.objects.all()
-	serializer_class = StudentSerializer
+class StudentDetail(APIView):
+	def get(self, request,  *args, **kwargs):
+        	student = Student.objects.filter(dni=kwargs['dni'])
+        	serializer = StudentSerializer(student, many=True)
+        	return Response(serializer.data)
 	
 class GradeList(generics.ListCreateAPIView):
 	queryset = Grade.objects.all()
@@ -34,9 +36,9 @@ class GradeList(generics.ListCreateAPIView):
 	filter_backends = [filters.SearchFilter]
 	search_fields = ['students_id', 'exam_id']
 	
-class GradeDetail(generics.RetrieveUpdateDestroyAPIView):
-	queryset = Grade.objects.all()
-	serializer_class = GradeSerializer
+#class GradeDetail(generics.RetrieveUpdateDestroyAPIView):
+#	queryset = Grade.objects.all()
+#	serializer_class = GradeSerializer
 
 class GradeExamList(generics.ListCreateAPIView):
 	serializer_class = GradeSerializer
@@ -45,7 +47,6 @@ class GradeExamList(generics.ListCreateAPIView):
 		return queryset
 		
 class GradeStudentList(APIView):
-	#serializer_class = GradeSerializer2(grade, many=True)
 	def get(self, request,  *args, **kwargs):
         	grade = Grade.objects.filter(students_id__dni=kwargs['dni'])
         	serializer = GradeSerializer2(grade, many=True)

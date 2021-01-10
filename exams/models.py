@@ -15,7 +15,7 @@ class Student(models.Model):
 	name = models.CharField(max_length=50)
 	
 	def __str__(self):
-		return self.student_id
+		return self.dni
 		
 class Grade(models.Model):
 	students_id = models.ForeignKey(Student, on_delete=models.DO_NOTHING)
