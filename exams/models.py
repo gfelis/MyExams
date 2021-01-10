@@ -11,7 +11,7 @@ class Exam(models.Model):
 		return self.title
 		
 class Student(models.Model):
-	student_id = models.CharField(max_length=9, unique=True)
+	dni = models.CharField(max_length=9, unique=True)
 	name = models.CharField(max_length=50)
 	
 	def __str__(self):
@@ -20,8 +20,8 @@ class Student(models.Model):
 class Grade(models.Model):
 	students_id = models.ForeignKey(Student, on_delete=models.DO_NOTHING)
 	exam_id = models.ForeignKey(Exam, on_delete=models.DO_NOTHING)
-	grade = models.IntegerField()
+	grade = models.IntegerField(default=0)
 	
 	def __str__(self):
-		return self.grade
+		return f"{self.students_id}{self.exam_id}{self.grade}"
 	

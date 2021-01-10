@@ -9,10 +9,18 @@ class ExamSerializer(serializers.ModelSerializer):
 		
 class StudentSerializer(serializers.ModelSerializer):
 	class Meta:
-		fields = ('student_id', 'name')
+		fields = ('id','dni', 'name')
 		model = Student
+		
+class GradeSerializer2(serializers.ModelSerializer):
+	students_id = StudentSerializer(read_only=False, many=False)
+	exam_id = ExamSerializer(read_only=False, many=False)
+
+	class Meta:
+		model = Grade
+		fields = ['students_id', 'exam_id', 'grade']
 		
 class GradeSerializer(serializers.ModelSerializer):
 	class Meta:
-		fields = ('students_id', 'exam_id','grade')
+		fields = "__all__"
 		model = Grade
