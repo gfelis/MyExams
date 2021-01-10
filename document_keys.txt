@@ -1,0 +1,7 @@
+the title of the exams is unique
+
+to search an exam: add "?search=[word-here]" at the end of your get with the word you want to search
+
+to post and put you need all the required fields.
+
+
